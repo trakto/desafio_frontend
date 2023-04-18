@@ -1,0 +1,963 @@
+{
+	"info": {
+		"_postman_id": "11eab319-ba72-4ce6-a002-a610a66cfb26",
+		"name": "Desafio Trakto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17508923"
+	},
+	"item": [
+		{
+			"name": "Sign In using Email and Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"access_token\", data.access_token);",
+							"postman.setEnvironmentVariable(\"refresh_token\", data.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"dev@trakto.io\",\r\n    \"password\": \"suasenha\"\r\n}"
+				},
+				"url": {
+					"raw": "https://api.trakto.io/auth/signin",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trakto",
+						"io"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "🟢 Success 200 | Login autorizado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dev-master@trakto.io\",\r\n    \"password\": \"K8k!fULUY3w.MK\"\r\n}"
+						},
+						"url": {
+							"raw": "{{main_url}}/auth/signin",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"14a7-uBbiGw9rPyM5K1VZCwvnVQMLh+0\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "a7bdd9db69037e005b27f17499904479;o=1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 23 Dec 2020 20:36:54 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5287"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5HAzAXIp\",\n    \"created_at\": \"2020-12-23T20:31:29.769Z\",\n    \"email\": \"api_test2021@test.com.br\",\n    \"app_reference\": {\n        \"id\": \"yJ9wtq8Vy5pQ1vR5OTQR\"\n    },\n    \"role\": \"user\",\n    \"is_deleted\": false,\n    \"force_reset_password\": true,\n    \"can_authenticate\": true,\n    \"current_profile\": {\n        \"product\": {\n            \"id\": \"TUPMcLXqM3Ea7r7EFDHS\"\n        },\n        \"current_locale\": \"pt-BR\"\n    },\n    \"profiles\": [\n        {\n            \"product\": {\n                \"id\": \"TUPMcLXqM3Ea7r7EFDHS\"\n            },\n            \"current_locale\": \"pt-BR\"\n        }\n    ],\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"\n}"
+				},
+				{
+					"name": "🔴 Erro 500 | Login não autorizado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"trakto@trakto.io\",\r\n    \"password\": \"loremipsum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main_url}}/auth/signin",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "cefc6e56c4ecec5b1fe7ef091ddccdbf;o=1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 23 Dec 2020 20:22:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				},
+				{
+					"name": "Email and Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"dev-master@trakto.io\",\r\n\t\"password\": \"K8k!fULUY3w.MK\"\r\n}"
+						},
+						"url": {
+							"raw": "{{main_url}}/auth/signin",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-security-policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "x-dns-prefetch-control",
+							"value": "off"
+						},
+						{
+							"key": "expect-ct",
+							"value": "max-age=0"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"167a-/se1R/NJJyAE9Asi/UUH1UaDbHE\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "ed0cafa545ca48c417584c1f28b19dbd;o=1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Feb 2021 22:45:12 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5754"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"role\": {\n        \"value\": \"global\",\n        \"title\": \"Global\"\n    },\n    \"created_at\": \"2020-05-29T18:00:45.095Z\",\n    \"can_authenticate\": true,\n    \"updated_at\": \"2021-02-11T13:53:08.177Z\",\n    \"company\": \"Trakto\",\n    \"current_profile\": {\n        \"subscription\": {\n            \"value\": \"value\"\n        },\n        \"current_locale\": \"pt-BR\",\n        \"product\": {\n            \"id\": \"TUPMcLXqM3Ea7r7EFDHS\"\n        }\n    },\n    \"current_locale\": {\n        \"fbvZngcBbaFZeUK8h0il\": \"en-US\",\n        \"ABxtKhOtkespxbaH44Ar\": \"pt-BR\",\n        \"mFANcrHhsF5eunUpXdqz\": \"pt-BR\",\n        \"VTJ45Xo6q7TSkkchQ24U\": \"pt-BR\",\n        \"TUPMcLXqM3Ea7r7EFDHS\": \"pt-BR\"\n    },\n    \"profiles\": [\n        {\n            \"product\": {\n                \"id\": \"TUPMcLXqM3Ea7r7EFDHS\"\n            }\n        }\n    ],\n    \"lastname\": \"dev\",\n    \"user_reference\": {\n        \"id\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2\"\n    },\n    \"subscription_active\": true,\n    \"logo\": {\n        \"low\": {\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2Fbcb10472-c53b-42b9-b6cd-2484839de34d__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_low.png?alt=media&token=bcb10472-c53b-42b9-b6cd-2484839de34d\",\n            \"directory\": \"user/\",\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_low\",\n            \"uuid\": \"bcb10472-c53b-42b9-b6cd-2484839de34d\",\n            \"extension\": \"png\"\n        },\n        \"provider\": \"external\",\n        \"raw\": {\n            \"extension\": \"png\",\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F5a51d0f4-460c-4e3d-a874-12954d04baf4__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw.png?alt=media&token=5a51d0f4-460c-4e3d-a874-12954d04baf4\",\n            \"directory\": \"user/\",\n            \"provider\": \"external\",\n            \"uuid\": \"5a51d0f4-460c-4e3d-a874-12954d04baf4\"\n        },\n        \"medium\": {\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_medium\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F2cfc896b-7ec7-4e0e-a345-63588cbe097b__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_medium.png?alt=media&token=2cfc896b-7ec7-4e0e-a345-63588cbe097b\",\n            \"directory\": \"user/\",\n            \"uuid\": \"2cfc896b-7ec7-4e0e-a345-63588cbe097b\",\n            \"extension\": \"png\"\n        },\n        \"high\": {\n            \"directory\": \"user/\",\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_high\",\n            \"uuid\": \"8be5429e-d7c6-4c4a-a19e-e6db1aff7aa3\",\n            \"extension\": \"png\",\n            \"provider\": \"external\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F8be5429e-d7c6-4c4a-a19e-e6db1aff7aa3__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_high.png?alt=media&token=8be5429e-d7c6-4c4a-a19e-e6db1aff7aa3\"\n        },\n        \"fileRef\": {\n            \"projectId\": \"trakto-production\",\n            \"databaseId\": \"(default)\",\n            \"segments\": [\n                \"file\",\n                \"HhyDuRAMysVkB0B61b2u\"\n            ]\n        },\n        \"thumbUuid\": \"1998ae7d-2e7e-430f-9db6-3d8c76fe632f\",\n        \"isThumbnail\": true\n    },\n    \"phonenumber\": \"\",\n    \"subscription_status\": \"active\",\n    \"subscription_rules\": {\n        \"remove_bg_count\": 5,\n        \"export_video\": true,\n        \"create_document\": true,\n        \"export_video_count\": 1000,\n        \"export_pdf_count\": 1000,\n        \"export_png_low\": true,\n        \"document_publish_online\": true,\n        \"export_gif\": true,\n        \"use_template_premium\": false,\n        \"export_png_medium\": true,\n        \"icon_stock\": true,\n        \"use_template_premium_count\": 3,\n        \"export_pdf_medium\": true,\n        \"export_with_watermark\": true,\n        \"remove_bg\": true,\n        \"export_png_count\": 1000,\n        \"create_document_count\": 5,\n        \"shape_stock\": true,\n        \"image_upload\": true,\n        \"image_stock\": true,\n        \"export_pdf_low\": true,\n        \"export_gif_count\": 0,\n        \"export_png_high\": true,\n        \"export_pdf_high\": true\n    },\n    \"email\": \"dev-master@trakto.io\",\n    \"limits\": {\n        \"gif_stock\": true,\n        \"export_video_count\": 1000,\n        \"create_document\": true,\n        \"export_pdf_medium\": true,\n        \"create_document_count\": 5,\n        \"document_publish_online\": true,\n        \"remove_bg\": true,\n        \"image_upload\": true,\n        \"export_gif_count\": 0,\n        \"export_png_high\": true,\n        \"remove_bg_count\": 5,\n        \"export_png_low\": true,\n        \"export_pdf_high\": true,\n        \"export_png_medium\": true,\n        \"use_template_premium\": false,\n        \"export_video\": true,\n        \"export_pdf_count\": 1000,\n        \"export_png_count\": 1000,\n        \"use_template_premium_count\": 3,\n        \"export_pdf_low\": true,\n        \"export_with_watermark\": true,\n        \"export_gif\": true,\n        \"image_stock\": true,\n        \"icon_stock\": true,\n        \"shape_stock\": true\n    },\n    \"firstname\": \"dev-master@trakto.io\",\n    \"customer_id\": \"cus_IKXX4JRH8535fu\",\n    \"subscription_payment_status\": \"free\",\n    \"approved_terms_use\": true,\n    \"subscription_plan_name\": {\n        \"en-US\": \"Free\",\n        \"pt-BR\": \"Free\"\n    },\n    \"firebase_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6InRCME0yQSJ9.eyJpc3MiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGUuY29tLyIsImF1ZCI6InRyYWt0by1wcm9kdWN0aW9uIiwiaWF0IjoxNjEzNjAxOTEyLCJleHAiOjE2MTQ4MTE1MTIsInVzZXJfaWQiOiJ1aFVKeU5raFJOWlI1OU42RldmVUxjOVFMYnMyIiwiZW1haWwiOiJkZXYtbWFzdGVyQHRyYWt0by5pbyIsInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCIsInZlcmlmaWVkIjpmYWxzZX0.PpZYsoag3ywLUQsL9SzNNH9VHo45xdgL2f8XMEFqeH2hNNLWeQtHV8yvjoxSo51fgUrHFZ1N7LUI2jzLciP5Ec0PVUYyZOaxWmfzsA3NtOSt3WLHY7VS_F2yvfF4Rvw_SfnpXZWjXCdjS3gONKe_cXcRU0JJLCj2kY0g23vjHi3_e7a9gbg7OQ4_ztitjJCDAmpmhNP_8iDXx2LVabT-sn5ehWm9lbRu0ucUTzBhrT3qExOJssgQaNzmOPWPrK0ky-jXe3RobQkJl0efuUX6YscaVcdZA7AkOOBGehJ_9I7Ss1m1llfE109LUrwYgHcdaXAT7WFxuPzvF1ImcMjt6Q\",\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXJyZW50X3Byb2ZpbGUiOnsicHJvZHVjdCI6eyJpZCI6IlRVUE1jTFhxTTNFYTdyN0VGREhTIn0sImN1cnJlbnRfbG9jYWxlIjoicHQtQlIifSwicHJvZmlsZXMiOlt7InByb2R1Y3QiOnsiaWQiOiJUVVBNY0xYcU0zRWE3cjdFRkRIUyJ9fV0sInN1YiI6InVoVUp5TmtoUk5aUjU5TjZGV2ZVTGM5UUxiczIiLCJyb2xlIjoiZ2xvYmFsIiwiY29udGV4dCI6InRyYWt0by5pbyIsImlhdCI6MTYxMzYwMTkxMiwiZXhwIjoxNjEzNjQ1MTEyfQ.8V5LmngYMzgpQaZQZzeF5SSUXjG7ZnusTjvZkSaUwik\",\n    \"user_id\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2\",\n    \"avatar\": {\n        \"extension\": \"png\",\n        \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw\",\n        \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F5a51d0f4-460c-4e3d-a874-12954d04baf4__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw.png?alt=media&token=5a51d0f4-460c-4e3d-a874-12954d04baf4\",\n        \"directory\": \"user/\",\n        \"provider\": \"external\",\n        \"uuid\": \"5a51d0f4-460c-4e3d-a874-12954d04baf4\"\n    }\n}"
+				},
+				{
+					"name": "Email and Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"dev-master@trakto.io\",\r\n\t\"password\": \"K8k!fULUY3w.MK\"\r\n}"
+						},
+						"url": {
+							"raw": "{{main_url}}/auth/signin",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-security-policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "x-dns-prefetch-control",
+							"value": "off"
+						},
+						{
+							"key": "expect-ct",
+							"value": "max-age=0"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"167a-/B2WJXXey5CpAW97NJ4kBmUe8hw\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "31ac2ee270b7aff62d7f16a1f9f7e9f8;o=1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Feb 2021 22:45:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5754"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"firstname\": \"dev-master@trakto.io\",\n    \"lastname\": \"dev\",\n    \"limits\": {\n        \"gif_stock\": true,\n        \"export_png_medium\": true,\n        \"export_pdf_high\": true,\n        \"use_template_premium_count\": 3,\n        \"export_pdf_medium\": true,\n        \"export_png_count\": 1000,\n        \"shape_stock\": true,\n        \"export_video\": true,\n        \"export_gif\": true,\n        \"export_pdf_count\": 1000,\n        \"image_stock\": true,\n        \"export_with_watermark\": true,\n        \"export_video_count\": 1000,\n        \"remove_bg_count\": 5,\n        \"document_publish_online\": true,\n        \"export_png_low\": true,\n        \"create_document_count\": 5,\n        \"export_pdf_low\": true,\n        \"image_upload\": true,\n        \"export_png_high\": true,\n        \"use_template_premium\": false,\n        \"export_gif_count\": 0,\n        \"create_document\": true,\n        \"icon_stock\": true,\n        \"remove_bg\": true\n    },\n    \"customer_id\": \"cus_IKXX4JRH8535fu\",\n    \"subscription_payment_status\": \"free\",\n    \"logo\": {\n        \"medium\": {\n            \"uuid\": \"2cfc896b-7ec7-4e0e-a345-63588cbe097b\",\n            \"directory\": \"user/\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F2cfc896b-7ec7-4e0e-a345-63588cbe097b__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_medium.png?alt=media&token=2cfc896b-7ec7-4e0e-a345-63588cbe097b\",\n            \"extension\": \"png\",\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_medium\"\n        },\n        \"high\": {\n            \"extension\": \"png\",\n            \"uuid\": \"8be5429e-d7c6-4c4a-a19e-e6db1aff7aa3\",\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_high\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F8be5429e-d7c6-4c4a-a19e-e6db1aff7aa3__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_high.png?alt=media&token=8be5429e-d7c6-4c4a-a19e-e6db1aff7aa3\",\n            \"directory\": \"user/\",\n            \"provider\": \"external\"\n        },\n        \"thumbUuid\": \"1998ae7d-2e7e-430f-9db6-3d8c76fe632f\",\n        \"fileRef\": {\n            \"segments\": [\n                \"file\",\n                \"HhyDuRAMysVkB0B61b2u\"\n            ],\n            \"projectId\": \"trakto-production\",\n            \"databaseId\": \"(default)\"\n        },\n        \"low\": {\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_low\",\n            \"extension\": \"png\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2Fbcb10472-c53b-42b9-b6cd-2484839de34d__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_low.png?alt=media&token=bcb10472-c53b-42b9-b6cd-2484839de34d\",\n            \"uuid\": \"bcb10472-c53b-42b9-b6cd-2484839de34d\",\n            \"directory\": \"user/\"\n        },\n        \"raw\": {\n            \"directory\": \"user/\",\n            \"uuid\": \"5a51d0f4-460c-4e3d-a874-12954d04baf4\",\n            \"extension\": \"png\",\n            \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw\",\n            \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F5a51d0f4-460c-4e3d-a874-12954d04baf4__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw.png?alt=media&token=5a51d0f4-460c-4e3d-a874-12954d04baf4\",\n            \"provider\": \"external\"\n        },\n        \"provider\": \"external\",\n        \"isThumbnail\": true\n    },\n    \"user_reference\": {\n        \"id\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2\"\n    },\n    \"subscription_plan_name\": {\n        \"pt-BR\": \"Free\",\n        \"en-US\": \"Free\"\n    },\n    \"phonenumber\": \"\",\n    \"approved_terms_use\": true,\n    \"profiles\": [\n        {\n            \"product\": {\n                \"id\": \"TUPMcLXqM3Ea7r7EFDHS\"\n            }\n        }\n    ],\n    \"email\": \"dev-master@trakto.io\",\n    \"updated_at\": \"2021-02-11T13:53:08.177Z\",\n    \"company\": \"Trakto\",\n    \"can_authenticate\": true,\n    \"subscription_rules\": {\n        \"export_pdf_low\": true,\n        \"use_template_premium\": false,\n        \"export_gif_count\": 0,\n        \"export_video\": true,\n        \"export_video_count\": 1000,\n        \"shape_stock\": true,\n        \"export_pdf_medium\": true,\n        \"icon_stock\": true,\n        \"export_png_medium\": true,\n        \"document_publish_online\": true,\n        \"export_pdf_high\": true,\n        \"export_png_high\": true,\n        \"export_gif\": true,\n        \"export_png_count\": 1000,\n        \"remove_bg_count\": 5,\n        \"export_png_low\": true,\n        \"image_upload\": true,\n        \"use_template_premium_count\": 3,\n        \"image_stock\": true,\n        \"create_document\": true,\n        \"export_with_watermark\": true,\n        \"create_document_count\": 5,\n        \"remove_bg\": true,\n        \"export_pdf_count\": 1000\n    },\n    \"current_profile\": {\n        \"subscription\": {\n            \"value\": \"value\"\n        },\n        \"current_locale\": \"pt-BR\",\n        \"product\": {\n            \"id\": \"TUPMcLXqM3Ea7r7EFDHS\"\n        }\n    },\n    \"role\": {\n        \"value\": \"global\",\n        \"title\": \"Global\"\n    },\n    \"subscription_status\": \"active\",\n    \"current_locale\": {\n        \"fbvZngcBbaFZeUK8h0il\": \"en-US\",\n        \"TUPMcLXqM3Ea7r7EFDHS\": \"pt-BR\",\n        \"mFANcrHhsF5eunUpXdqz\": \"pt-BR\",\n        \"ABxtKhOtkespxbaH44Ar\": \"pt-BR\",\n        \"VTJ45Xo6q7TSkkchQ24U\": \"pt-BR\"\n    },\n    \"subscription_active\": true,\n    \"created_at\": \"2020-05-29T18:00:45.095Z\",\n    \"firebase_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6InRCME0yQSJ9.eyJpc3MiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGUuY29tLyIsImF1ZCI6InRyYWt0by1wcm9kdWN0aW9uIiwiaWF0IjoxNjEzNjAxOTQ2LCJleHAiOjE2MTQ4MTE1NDYsInVzZXJfaWQiOiJ1aFVKeU5raFJOWlI1OU42RldmVUxjOVFMYnMyIiwiZW1haWwiOiJkZXYtbWFzdGVyQHRyYWt0by5pbyIsInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCIsInZlcmlmaWVkIjpmYWxzZX0.mw6ZpR0o1vU6l1qnsvuR_pi63GHhrBEXyyy-A1OgNf4vj9X56sZCcDZ1LoBY1J8sqphZdda9EsINONDZZxq_G0S00kw0FfF9t_TF-PHaFaNboV51FMQyi9UrejHu2N2rWnbTVDyVEGRf0hqfBAnmVlD6MfNiQ9A3MgLUuoVuYQB9_p_uiSRH1CLvJpTs7GVYeXBOughyKIDulbB-xG5r9ShXsPSiJVIT-Ef_Ogj0co3XcXX-X0EsNZ0h87-BVLTXdRlSkQx24RDUcr8KMyJTfkfrjdaM9_Mgd2aUa16_7YEFXg0zrXOM-wHfsvciGNd4dlEsESuT3t_lm5mb_eozYw\",\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXJyZW50X3Byb2ZpbGUiOnsicHJvZHVjdCI6eyJpZCI6IlRVUE1jTFhxTTNFYTdyN0VGREhTIn0sImN1cnJlbnRfbG9jYWxlIjoicHQtQlIifSwicHJvZmlsZXMiOlt7InByb2R1Y3QiOnsiaWQiOiJUVVBNY0xYcU0zRWE3cjdFRkRIUyJ9fV0sInN1YiI6InVoVUp5TmtoUk5aUjU5TjZGV2ZVTGM5UUxiczIiLCJyb2xlIjoiZ2xvYmFsIiwiY29udGV4dCI6InRyYWt0by5pbyIsImlhdCI6MTYxMzYwMTk0NiwiZXhwIjoxNjEzNjQ1MTQ2fQ.BwZOYJ2JJcmMlJ42smWjFsKcUN9_Gru1eLoocZm2G2s\",\n    \"user_id\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2\",\n    \"avatar\": {\n        \"directory\": \"user/\",\n        \"uuid\": \"5a51d0f4-460c-4e3d-a874-12954d04baf4\",\n        \"extension\": \"png\",\n        \"filename\": \"uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw\",\n        \"url\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/user%2F%2F5a51d0f4-460c-4e3d-a874-12954d04baf4__uhUJyNkhRNZR59N6FWfULc9QLbs2__thumb_1998ae7d-2e7e-430f-9db6-3d8c76fe632f_raw.png?alt=media&token=5a51d0f4-460c-4e3d-a874-12954d04baf4\",\n        \"provider\": \"external\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "List all designs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXJyZW50X3Byb2ZpbGUiOnsicHJvZHVjdCI6eyJpZCI6ImZidlpuZ2NCYmFGWmVVSzhoMGlsIn0sImN1cnJlbnRfbG9jYWxlIjoicHQtQlIifSwicHJvZmlsZXMiOlt7InByb2R1Y3QiOnsiaWQiOiJFb1N5TVJWT054RkM5V0pYQ2N5TCJ9fSx7InByb2R1Y3QiOnsiaWQiOiJJYmNyTHluNjVlUzJsaFE5OHA5eCJ9fSx7InByb2R1Y3QiOnsiaWQiOiJmYnZabmdjQmJhRlplVUs4aDBpbCJ9fSx7InByb2R1Y3QiOnsiaWQiOiJzV3lHNnQ5SXpnY1NKakZiUnBGOSJ9fSx7InByb2R1Y3QiOnsiaWQiOiJ2VVpERlFtMDRZYnI5NTBGUFRwdyJ9fV0sInN1YiI6IkFrcHZDdXhYR01mM25wWVhhanlFWjhBMkFQbjIiLCJyb2xlIjoiZ2xvYmFsIiwiY29udGV4dCI6InRyYWt0by5pbyIsImlhdCI6MTY4MTg0MzQwMCwiZXhwIjoxNjgyMDE2MjAwfQ.VfogPrvu6YQoTCQV854Kaa7JyXikcZ4nlrYM5n4Qdqk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "https://api.trakto.io/document?total_per_page=10&order_by=title&order_orientation=desc",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trakto",
+						"io"
+					],
+					"path": [
+						"document"
+					],
+					"query": [
+						{
+							"key": "total_per_page",
+							"value": "10"
+						},
+						{
+							"key": "order_by",
+							"value": "title"
+						},
+						{
+							"key": "order_orientation",
+							"value": "desc"
+						},
+						{
+							"key": "created_between_start",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "created_between_end",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "nextCursor",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "previousCursor",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "updated_between_start",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "updated_between_end",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "🟢Sucesso 200 | Lista de designs criados",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{main_url}}/document?total_per_page=2&nextCursor=lILbSSSSS",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"document"
+							],
+							"query": [
+								{
+									"key": "total_per_page",
+									"value": "2"
+								},
+								{
+									"key": "created_between_start",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "created_between_end",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "nextCursor",
+									"value": "lILbSSSSS"
+								},
+								{
+									"key": "previousCursor",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updated_between_start",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updated_between_end",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"137d-upEBRsKzfm1DyBhHvqziuzWlE4M\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "47a9ad0b0b29f526414ac679f7c31f50"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Dec 2020 21:34:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4989"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"cover\": {\n                \"raw\": \"http://res.cloudinary.com/trakto/image/upload/w_2160,c_scale/v1607364496/rkfp1ywvw00isqj07hxd.png\",\n                \"medium\": \"http://res.cloudinary.com/trakto/image/upload/w_1080,c_scale/v1607364496/rkfp1ywvw00isqj07hxd.png\",\n                \"high\": \"http://res.cloudinary.com/trakto/image/upload/w_2160,c_scale/v1607364496/rkfp1ywvw00isqj07hxd.png\",\n                \"low\": \"http://res.cloudinary.com/trakto/image/upload/w_432,c_scale/v1607364496/rkfp1ywvw00isqj07hxd.png\"\n            },\n            \"is_template\": false,\n            \"theme_reference\": {\n                \"id\": \"oWel510GDkHlwW1giqm6\"\n            },\n            \"provider\": \"admin\",\n            \"created_at\": \"2020-12-07T17:49:13.024Z\",\n            \"pages\": [\n                {\n                    \"page_index\": 0,\n                    \"page_format_id\": \"JObqHpR\"\n                },\n                {\n                    \"page_index\": 1,\n                    \"page_format_id\": \"JObqHpR\"\n                }\n            ],\n            \"is_featured\": false,\n            \"is_printable\": false,\n            \"published\": false,\n            \"published_at\": null,\n            \"tags\": [],\n            \"page_format_reference\": {\n                \"id\":  \"JObqHpR\"\n            },\n            \"available_locales\": [\n                \"pt-BR\"\n            ],\n            \"author\": {\n                \"name\": null\n            },\n            \"slug\": null,\n            \"thumbs\": {\n                \"raw\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/my_gallery%2FnwPRQLzGFjbnVMcjkxzegPI8wxA2%2Fd7b0ce55-0823-46c3-9ec9-327ec8613ed8__user_image__thumb_53ab9c2d-71b5-4047-b5f9-547e2510c79a_raw.png?alt=media&token=d7b0ce55-0823-46c3-9ec9-327ec8613ed8\",\n                \"medium\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/my_gallery%2FnwPRQLzGFjbnVMcjkxzegPI8wxA2%2F08e40302-be63-473e-90ee-64c000708570__user_image__thumb_53ab9c2d-71b5-4047-b5f9-547e2510c79a_medium.png?alt=media&token=08e40302-be63-473e-90ee-64c000708570\",\n                \"high\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/my_gallery%2FnwPRQLzGFjbnVMcjkxzegPI8wxA2%2F115c528b-f7df-492b-9785-82742dc6490f__user_image__thumb_53ab9c2d-71b5-4047-b5f9-547e2510c79a_high.png?alt=media&token=115c528b-f7df-492b-9785-82742dc6490f\",\n                \"low\": \"https://firebasestorage.googleapis.com/v0/b/trakto-production.appspot.com/o/my_gallery%2FnwPRQLzGFjbnVMcjkxzegPI8wxA2%2F7919fe9a-d1a7-4cee-bba9-7bf600da2adc__user_image__thumb_53ab9c2d-71b5-4047-b5f9-547e2510c79a_low.png?alt=media&token=7919fe9a-d1a7-4cee-bba9-7bf600da2adc\"\n            },\n            \"updated_at\": \"2020-12-10T17:59:55.387Z\",\n            \"id\": \"nXPEl31mkV\",\n            \"title\": \"Lorem Ipsum\"\n        }\n    ],\n    \"nextCursor\": \"6beQ7nhhqHRcE6lFnjsu\",\n    \"previousCursor\": \"nXPEl31mkVyvY3SlILbm\",\n    \"hasNextPage\": true,\n    \"hasPreviousPage\": true\n}"
+				},
+				{
+					"name": "🔴Erro 401 | Acesso não autorizado ou inválido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{main_url}}/document?total_per_page=2",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"document"
+							],
+							"query": [
+								{
+									"key": "total_per_page",
+									"value": "2"
+								},
+								{
+									"key": "created_between_start",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "created_between_end",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "nextCursor",
+									"value": "lILbSSSSS",
+									"disabled": true
+								},
+								{
+									"key": "previousCursor",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updated_between_start",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updated_between_end",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "2e609b8a80a428d4939ee8a1253badc7"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Dec 2020 21:58:02 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+				},
+				{
+					"name": "🔴 Erro 500 | Paginação incorreta",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{main_url}}/document?total_per_page=2&nextCursor=lILbSSSSS",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"document"
+							],
+							"query": [
+								{
+									"key": "total_per_page",
+									"value": "2"
+								},
+								{
+									"key": "created_between_start",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "created_between_end",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "nextCursor",
+									"value": "lILbSSSSS"
+								},
+								{
+									"key": "previousCursor",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updated_between_start",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updated_between_end",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "dd8a73da90970bbd1d309dc2bb456c2d"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Dec 2020 21:56:28 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a single design",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXJyZW50X3Byb2ZpbGUiOnsicHJvZHVjdCI6eyJpZCI6ImZidlpuZ2NCYmFGWmVVSzhoMGlsIn0sImN1cnJlbnRfbG9jYWxlIjoicHQtQlIifSwicHJvZmlsZXMiOlt7InByb2R1Y3QiOnsiaWQiOiJFb1N5TVJWT054RkM5V0pYQ2N5TCJ9fSx7InByb2R1Y3QiOnsiaWQiOiJJYmNyTHluNjVlUzJsaFE5OHA5eCJ9fSx7InByb2R1Y3QiOnsiaWQiOiJmYnZabmdjQmJhRlplVUs4aDBpbCJ9fSx7InByb2R1Y3QiOnsiaWQiOiJzV3lHNnQ5SXpnY1NKakZiUnBGOSJ9fSx7InByb2R1Y3QiOnsiaWQiOiJ2VVpERlFtMDRZYnI5NTBGUFRwdyJ9fV0sInN1YiI6IkFrcHZDdXhYR01mM25wWVhhanlFWjhBMkFQbjIiLCJyb2xlIjoiZ2xvYmFsIiwiY29udGV4dCI6InRyYWt0by5pbyIsImlhdCI6MTY4MTg0MzQwMCwiZXhwIjoxNjgyMDE2MjAwfQ.VfogPrvu6YQoTCQV854Kaa7JyXikcZ4nlrYM5n4Qdqk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "https://api.trakto.io/document/:id",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trakto",
+						"io"
+					],
+					"path": [
+						"document",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "IN8r462q9Vulc9tvij2d",
+							"description": "ID do design que deverá ser recuperado"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "🟢 Sucesso 200 | Design Recebido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{main_url}}/document/:id",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"document",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "xvEo3Chk04PjOUQBWVs5",
+									"description": "ID do design que deverá ser recuperado"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"1ac-gxVoR8vMN9NNx/0CEm/CIp2qomc\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "b626dc9ca6f1479479c90cb56bd73e20;o=1"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Dec 2020 22:05:07 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "428"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"created_at\": \"2020-12-14T13:46:20.511Z\",\n    \"is_deleted\": false,\n    \"page_format_reference\": {\n        \"id\": \"ZQIUIpDRRG\"\n    },\n    \"updated_at\": \"2020-12-14T13:46:20.511Z\",\n    \"pages\": [\n        {\n            \"page_index\": 0,\n            \"page_format_id\": \"ZQIUIpDRRG\"\n        }\n    ],\n    \"id\": \"xvEo3Chk04\",\n    \"title\": \"Lorem Ipsum\"\n}"
+				},
+				{
+					"name": "🔴Erro 404 | ID inválido ou inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{main_url}}/document/F9edTBkeE3g8xSYsPVoG",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"document",
+								"F9edTBkeE3g8xSYsPVoG"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"46-eBLzg5rx3gdGl8Iy8uauLrg61bg\""
+						},
+						{
+							"key": "X-Cloud-Trace-Context",
+							"value": "03879a1c0a781a2205df37e848f9daa9;o=1"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Dec 2020 22:01:24 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Google Frontend"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Document not found!\",\n    \"error\": \"Not Found\"\n}"
+				}
+			]
+		}
+	]
+}
