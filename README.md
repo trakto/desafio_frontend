@@ -28,7 +28,7 @@ https://www.trakto.io
 
 Protótipo Figma:
 
-https://www.figma.com/file/Ajzapgkl4vrXw8KnHlIwPh/Prot%C3%B3tipo-Trakto-TV
+https://www.figma.com/file/Ajzapgkl4vrXw8KnHlIwPh/PrototipoTraktoTV
 
 Collection do Postman para referência da API:
 
