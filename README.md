@@ -14,7 +14,7 @@ Como professor da Trakto Educação, eu preciso ter uma plataforma quer siga o p
 
 O módulo de "Material didático" deve conter a lista dos meus 10 designs que foram editados recentemente e deve ter a opção de listar todos os materiais. Ao clicar na miniatura do design ou no nome do mesmo, deve-se abrir o modo de apresentação do nosso editor em uma nova aba.
 
-Todas as informações sobre a API estão na collectio do postman na lista de links.
+Todas as informações sobre a API estão na collectio. do postman na lista de links.
 
 ## Critérios de aceite
 
