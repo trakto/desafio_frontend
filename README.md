@@ -32,7 +32,7 @@ https://www.figma.com/file/Ajzapgkl4vrXw8KnHlIwPh/Prot%C3%B3tipo-Trakto-TV
 
 Collection do Postman para referência da API:
 
-DesafioTrakto.postman_collection.json
+https://github.com/trakto/desafio_frontend/blob/main/DesafioTrakto.postman_collection.json
 
 ## Entrega
 
