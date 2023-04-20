@@ -19,6 +19,7 @@ Todas as informações sobre a API estão na collectio. do postman na lista de l
 ## Critérios de aceite
 
 - O visual deve ser idêntico ao protótipo do figma;
+- O projeto deve ser dedsenvolvido em Angular 2+;
 - As requisições à API devem ser reais, e o candidato deve ter uma conta gratuita na trakto para usar suas credenciais para usar a API;
 - O repositório deve está publicado no github e o README deve conter todas as informações necessárias para rodar a aplicação.
 
@@ -38,7 +39,7 @@ https://github.com/trakto/desafio_frontend/blob/main/DesafioTrakto.postman_colle
 
 ## Entrega
 
-Basta enviar o link do seu repositórion na Gupy.
+Basta enviar o link do seu repositórion na Gupy. Não precisa de deploy em qualquer plataforma e não precisa ser responsivo.
 
 ## Avaliação
 
