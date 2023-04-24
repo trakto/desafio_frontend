@@ -16,6 +16,10 @@ O módulo de "Material didático" deve conter a lista dos meus 10 designs que fo
 
 Todas as informações sobre a API estão na collectio. do postman na lista de links.
 
+**Observação 1**: Como é preciso listar os últimos materiais editados, você vai precisar entrar na plataforma (https://dashboard.trakto.io/), criar uma conta gratuita e criar alguns documentos a partir de qualquer template disponível, não é preciso customizá-los mas fique à vontade se quiser fazer.
+
+**Observação 2**: O link do modo de apresentação dos designs é **https://editor.trakto.io/presentation/p/{ID}**,  onde **{ID}** é o atributo **ID** retornado do end-point de listagem de documentos (List all designs).
+
 ## Critérios de aceite
 
 - O visual deve ser idêntico ao protótipo do figma;
